@@ -10,6 +10,7 @@ INC= $(wildcard inc/*.h)
 SRC= $(wildcard src/*.c)
 OBJ= $(subst src/,obj/,$(SRC:%.c=%.o))
 EXE_NAME=endgame
+LINK_DIR= $(LINK_DIR_LINUX)
 
 all: ENDGAME clean
 
@@ -17,7 +18,7 @@ $(subst src/,,$(SRC)):
 	$(CC) $(CFLAGS) -c "src/$@" -o "obj/$(subst .c,.o,$@)" $(INC_DIR)
  
 ENDGAME: precomp $(subst src/,,$(SRC))
-	$(CC) $(CFLAGS) -o $(EXE_NAME) obj/*.o $(INC_DIR) $(LINK_DIR_MAC)
+	$(CC) $(CFLAGS) -o $(EXE_NAME) obj/*.o $(INC_DIR) $(LINK_DIR)
 
 precomp:
 	mkdir -p obj
